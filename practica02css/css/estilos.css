@@ -6,15 +6,45 @@ body {
 }
 
 footer {
+  position: relative;
   background: rgb(68, 101, 177);
   color: white;
   margin-top: 40px;
+  height: 160px;
+  padding: 20px;
 }
 
 footer article {
   width: 32.8%;
   display: inline-block;
   vertical-align: bottom;
+  text-align: center;
+}
+
+footer article input[type="button"] {
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+#twitter {
+  position: absolute;
+  top: -25px;
+  left: 885px;
+}
+
+#facebook {
+  position: absolute;
+  top: -25px;
+  left: 830px;
+}
+
+#personas {
+  position: absolute;
+  top: -70px;
+  left: 950px;
 }
 
 header input {
@@ -111,12 +141,14 @@ header nav ul li {
 
 #secc03art04 input {
   border-radius: 5px;
+  height: 25px;
 }
 
 #secc03art04 input[type="button"] {
   background: #8bc500;
   border: 1px solid #8bc500;
   color: white;
+  width: 60px;
 }
 
 .colorRosa {
