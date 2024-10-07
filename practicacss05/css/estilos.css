@@ -1,0 +1,198 @@
+body {
+  background-color: lightgray;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin: 0px auto;
+  max-width: 723px;
+}
+
+.contenedor {
+  display: grid;
+  grid-template:
+    "header header"
+    "navBar navBar"
+    "links principal"
+    "lprogress principal";
+}
+
+.cubes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 5px;
+  text-align: center;
+}
+
+.cubes article {
+  color: rgb(184, 255, 213);
+  border-radius: 5px;
+  font-size: 0.6em;
+  padding: 10px 15px;
+}
+
+.cubes article:nth-child(1) {
+  background: rgb(25, 168, 33);
+}
+
+.cubes article:nth-child(2) {
+  background: rgb(26, 109, 169);
+}
+
+.cubes article:nth-child(3) {
+  background: rgb(127, 26, 167);
+}
+
+.cubes article:nth-child(4) {
+  background: rgb(167, 25, 25);
+}
+
+.cubes img {
+  width: 50px;
+}
+.header {
+  grid-area: header;
+  background: rgb(35, 92, 146);
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.header img {
+  width: 150px;
+}
+
+.links {
+  grid-area: links;
+  background: rgb(30, 73, 114);
+  color: white;
+  font-size: 0.6em;
+  text-align: left;
+  width: 150px;
+}
+
+.linksExample {
+  margin-left: 10px;
+}
+
+.links img {
+  width: 15px;
+  vertical-align: middle;
+}
+
+.links h4 {
+  background: rgb(35, 92, 146);
+  margin: 0px;
+  padding: 5px 0px;
+  width: 100%;
+}
+
+.navBar {
+  background-color: rgb(239, 239, 239);
+  grid-area: navBar;
+  text-align: right;
+  padding: 10px 5px;
+}
+
+.navBar img {
+  width: 70px;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 5px;
+  text-align: center;
+}
+
+.panels h4 {
+  color: white;
+  font-size: 2em;
+  margin: 0px;
+  width: 100%;
+}
+
+.panels01Porcentaje {
+  background: rgb(188, 231, 240);
+}
+
+.panels02Porcentaje {
+  background: rgb(250, 234, 204);
+}
+
+.panels03Porcentaje {
+  background: rgb(235, 204, 208);
+}
+
+.panels article:nth-child(1) {
+  border: 1px solid rgb(188, 231, 240);
+}
+
+.panels article:nth-child(2) {
+  border: 1px solid rgb(250, 234, 204);
+}
+
+.panels article:nth-child(3) {
+  border: 1px solid rgb(235, 204, 208);
+}
+
+.panels img {
+  width: 150px;
+}
+
+.principal {
+  grid-area: principal;
+  background: white;
+  margin-left: 10px;
+}
+
+.principalTitulos {
+  color: rgb(174, 174, 174);
+  font-size: 0.6em;
+}
+
+.progress {
+  grid-area: lprogress;
+  background: white;
+  color: black;
+  font-size: 0.6em;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.progress h4 {
+  background: rgb(35, 92, 146);
+  color: white;
+  margin: 0px;
+  padding: 5px 0px;
+  width: 100%;
+}
+
+.progressLogo {
+  vertical-align: middle;
+  width: 15px;
+}
+
+.progressBarra {
+  width: 100%;
+}
+
+.usuarios {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  text-align: center;
+}
+
+.usuarios article {
+  background: rgb(74, 106, 174);
+  color: white;
+  padding: 10px;
+}
+
+.usuarios input {
+  background: rgb(91, 190, 224);
+  border: 1px solid rgb(91, 190, 224);
+  color: white;
+}
+
+.usuarios img {
+  width: 100px;
+}
