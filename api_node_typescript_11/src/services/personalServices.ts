@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import { Personal, PersonalNuevo } from "../typesPersonal";
+import { personaNuevoSchema, personaSchema } from "../schema/personal.schema";
 
 const conexion = mysql.createPool({
   host: "localhost",
@@ -32,6 +33,10 @@ export const encuentraPersonal = async (id: number) => {
 
 export const agregarPersonal = async (nuevo: PersonalNuevo) => {
   try {
+    const validacion = personaSchema.safeParse(nuevo);
+    if (!validacion.success) {
+      return { error: validacion.error };
+    }
     const [results] = await conexion.query(
       "INSERT INTO personal(nombre, direccion, telefono, estatus) values(?,?,?,?)",
       [nuevo.nombre, nuevo.direccion, nuevo.telefono, nuevo.estatus]
@@ -42,17 +47,15 @@ export const agregarPersonal = async (nuevo: PersonalNuevo) => {
   }
 };
 
-export const modificarPersonal = async (modificado: Personal) => {
+export const modificarPersonal = async (nuevo: Personal) => {
   try {
+    const validacion = personaNuevoSchema.safeParse(nuevo);
+    if (!validacion.success) {
+      return { error: validacion.error };
+    }
     const [results] = await conexion.query(
       "UPDATE personal SET nombre = ?, direccion = ?, telefono = ?, estatus = ? WHERE id = ?",
-      [
-        modificado.nombre,
-        modificado.direccion,
-        modificado.telefono,
-        modificado.estatus,
-        modificado.id,
-      ]
+      [nuevo.nombre, nuevo.direccion, nuevo.telefono, nuevo.estatus, nuevo.id]
     );
     return results;
   } catch (err) {
