@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const telefonoRegEx = new RegExp(
-  /^([+]?[\s0-9]+)? (\d{3} | [ ( ]?[0-9]+[ ) ] )? ( [-]?[\s]?[0-9])+$/
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
 );
 // const nombreRegEx = new RegExp(/^(A-Z|a-z{200})+$/);
 // Validaciones con Zod - constuir schema
@@ -27,7 +27,7 @@ export const personaSchema = z
   })
   .or(
     z.object({
-      telefono: z.string().min(10).max(10),
+      telefono: z.string().min(10).max(15),
     })
   )
   .or(

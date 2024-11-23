@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 import { Personal, PersonalNuevo } from "../typesPersonal";
-import { personaNuevoSchema, personaSchema } from "../schema/personal.schema";
+import { personaSchema } from "../schema/personal.schema";
 
 const conexion = mysql.createPool({
   host: "localhost",
@@ -76,10 +76,11 @@ export const agregarPersonal = async (nuevo: PersonalNuevo) => {
 
 export const modificarPersonal = async (nuevo: Personal) => {
   try {
-    const validacion = personaNuevoSchema.safeParse(nuevo);
-    if (!validacion.success) {
-      return { error: validacion.error };
-    }
+    // const validacion = personaNuevoSchema.safeParse(nuevo);
+    // if (!validacion.success) {
+    //   return { error: validacion.error };
+
+    // }
     const [results] = await conexion.query(
       "UPDATE personal SET nombre = ?, direccion = ?, telefono = ?, estatus = ? WHERE id = ?",
       [nuevo.nombre, nuevo.direccion, nuevo.telefono, nuevo.estatus, nuevo.id]
