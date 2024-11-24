@@ -46,6 +46,8 @@ export const personaNuevoSchema = z
     direccion: z.string().min(2).max(200),
     telefono: z.string().regex(telefonoRegEx),
     estatus: z.number().int().positive(),
+    // estatus: z.string(),
+
     //   .min(1)
     //   .max(2, "Los valores correctos son 1 y 2"),
   })

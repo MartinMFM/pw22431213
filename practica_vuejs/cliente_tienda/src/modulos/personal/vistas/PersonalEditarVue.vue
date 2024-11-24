@@ -8,55 +8,60 @@
         Datos actualizados con exito
       </div>
       <div class="card-body">
-        <div class="mb-3">
-          Id
-          <input
-            type="text"
-            class="form-control"
-            v-model="personal[0].id"
-            disabled
-          />
-        </div>
-        <div class="mb-3">
-          Nombre
-          <input
-            type="text"
-            class="form-control"
-            v-model="personal[0].nombre"
-          />
-        </div>
-        <div class="mb-3">
-          Direccion
-          <input
-            type="text"
-            class="form-control"
-            v-model="personal[0].direccion"
-          />
-        </div>
-        <div class="mb-3">
-          Telefono
-          <input
-            type="text"
-            class="form-control"
-            v-model="personal[0].telefono"
-          />
-        </div>
-        <div class="mb-3">
-          Estatus
-          <input
-            type="text"
-            class="form-control"
-            v-model="personal[0].estatus"
-          />
-        </div>
-        <div class="mb-3">
-          <button
-            class="btn btn-primary"
-            @click="actualizarPersonal(personal[0])"
-          >
-            Actualizar
-          </button>
-        </div>
+        <Form :validation-schema="PersonalSchema" @submit="onTodoBien">
+          <div class="mb-3">
+            Id
+            <input
+              type="text"
+              class="form-control"
+              v-model="personal[0].id"
+              disabled
+            />
+          </div>
+          <div class="mb-3">
+            Nombre
+            <Field
+              name="nombre"
+              type="text"
+              class="form-control"
+              v-model="personal[0].nombre"
+            />
+            <ErrorMessage name="nombre" class="errorValidacion" />
+          </div>
+          <div class="mb-3">
+            Direccion
+            <Field
+              name="direccion"
+              type="text"
+              class="form-control"
+              v-model="personal[0].direccion"
+            />
+            <ErrorMessage name="direccion" class="errorValidacion" />
+          </div>
+          <div class="mb-3">
+            Telefono
+            <Field
+              name="telefono"
+              type="text"
+              class="form-control"
+              v-model="personal[0].telefono"
+            />
+            <ErrorMessage name="telefono" class="errorValidacion" />
+          </div>
+          <div class="mb-3">
+            Estatus
+            <Field
+              name="estatus"
+              type="text"
+              class="form-control"
+              v-model="personal[0].estatus"
+            />
+            <ErrorMessage name="estatus" class="errorValidacion" />
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Actualizar</button>
+          </div>
+        </Form>
       </div>
     </div>
   </div>
@@ -64,9 +69,10 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import type { PersonalAgregar } from "../interfaces/personal-interface";
 import { usePersonal } from "../controladores/usePersonal";
 import { useRoute } from "vue-router";
+import { PersonalSchema } from "../schemas/PersonalSchema";
+import { Field, Form, ErrorMessage } from "vee-validate";
 const { traePersonalId, mensaje, personal, actualizarPersonal } = usePersonal();
 let idPersona = 0;
 const route = useRoute();
@@ -74,6 +80,15 @@ onMounted(async () => {
   idPersona = Number(route.params.id);
   await traePersonalId(Number(idPersona));
 });
+
+const onTodoBien = async () => {
+  await actualizarPersonal(personal.value[0]);
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.errorValidacion {
+  color: red;
+  font-weight: bold;
+}
+</style>
